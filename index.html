@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Aesthetic.</title>
+  <link rel="shortcut icon" href="favicon.png" />
+<script src="js/RadGrid.min.js"></script>
+<script src="js/AestheticInterface.min.js"></script>
+	<link rel="icon" href="app/icon.png" type="image/png">
+	<link rel="apple-touch-icon-precomposed" href="app/mobile-icon.png">
+<link rel="stylesheet" type="text/css" href="css/interface.css">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:creator" content="@doseofted">
+	<meta name="twitter:image" content="http://doseofted.com/project/aesthetic/app/twitter-image.png">
+	<meta property="og:description" content="An interactive, distorting grid that can be customized however you like and then shared with others.">
+	<meta property="og:title" content="Aesthetic.">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://doseofted.com/project/aesthetic/app.htm">
+	<meta property="og:image" content="http://doseofted.com/project/aesthetic/app/facebook-image.png">
+</head>
+<body>
+	<div id="window-container">
+		<div id="settings-window" class="window">
+			<div class="title">
+				<p>Aesthetic Settings</p>
+				<div class="shrink">
+					<div class="icon expand"></div>
+				</div>
+			</div>
+			<div class="window-content hide">
+				<ul class="tab-bar">
+					<li id="grid-tab" class="active">Grid</li>
+					<li id="distortion-tab">Distortion</li>
+					<li id="text-tab">Text</li>
+					<li id="background-tab">Background</li>
+				</ul>
+				<form class="tab-content">
+					<div class="content active" id="grid-settings">
+						<div class="property">
+							<label for="gridSize">Grid Size:</label>
+							<div class="range-container">
+								<input type="range" name="gridSizeRange" min="8" max="128" value="24">
+							</div>
+							<div class="number-container">
+								<input type="number" id="gridSize" name="gridSize" min="8" max="128" value="24">
+							</div>
+						</div>
+						<div class="property">
+							<label for="gridThickness">Grid Thickness:</label>
+							<div class="range-container">
+								<input type="range" name="gridThicknessRange" min="0" max="40" value="1">
+							</div>
+							<div class="number-container">
+								<input type="number" id="gridThickness" name="gridThickness" min="0" max="40" value="1">
+							</div>
+						</div>
+						<div class="property">
+							<label for="gridColor">Grid Color:</label>
+							<div class="color-container">
+								<input type="color" data-color="true" id="gridColor" name="gridColor" value="#ffffff">
+							</div>
+						</div>
+						<div class="property">
+							<label for="useCirclesInstead">Render Circles:</label>
+							<div class="select-container">
+								<select id="useCirclesInstead" name="useCirclesInstead">
+									<option value="true">Yes</option>
+									<option value="false" selected>No</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="content" id="distortion-settings">
+						<div class="property">
+							<label for="radius">Distort Size:</label>
+							<div class="range-container">
+								<input type="range" name="radiusRange" min="2" max="16" value="8">
+							</div>
+							<div class="number-container">
+								<input type="number" id="radius" name="radius" min="2" max="16" value="8">
+							</div>
+						</div>
+						<div class="property">
+							<label for="numberOfPoints">Distort Points:</label>
+							<div class="range-container">
+								<input type="range" name="numberOfPointsRange" min="0" max="100" value="24">
+							</div>
+							<div class="number-container">
+								<input type="number" id="numberOfPoints" name="numberOfPoints" min="0" max="100" value="24">
+							</div>
+						</div>
+						<div class="property">
+							<label for="speed">Distort Speed:</label>
+							<div class="range-container">
+								<input type="range" name="speedRange" min="10" max="300" value="236">
+							</div>
+							<div class="number-container">
+								<input type="number" id="speed" name="speed" min="10" max="300" value="236">
+							</div>
+						</div>
+						<div class="property">
+							<label for="resetGridStrength">Distort Resistance:</label>
+							<div class="range-container">
+								<input type="range" name="resetGridStrengthRange" min="0" max="2" step="0.1" value="1">
+							</div>
+							<div class="number-container">
+								<input type="number" id="resetGridStrength" name="resetGridStrength" min="0" max="2" step="0.1" value="1">
+							</div>
+						</div>
+					</div>
+					<div class="content" id="text-settings">
+						<div class="property">
+							<label for="gridSize">Custom Text:</label>
+							<div class="text-container">
+								<input type="text" id="text" name="text" value="Aesthetic.">
+							</div>
+						</div>
+						<div class="property">
+							<label for="fontSize">Text Size:</label>
+							<div class="range-container">
+								<input type="range" name="fontSizeRange" min="8" max="200" value="48">
+							</div>
+							<div class="number-container">
+								<input type="number" id="fontSize" name="fontSize" min="8" max="200" value="48">
+							</div>
+						</div>
+						<div class="property">
+							<label for="lineHeight">Line Height:</label>
+							<div class="range-container">
+								<input type="range" name="lineHeightRange" min="1" max="2" step="0.1" value="2">
+							</div>
+							<div class="number-container">
+								<input type="number" id="lineHeight" name="lineHeight" min="1" max="2" step="0.1" value="2">
+							</div>
+						</div>
+						<div class="property">
+							<label for="shadowOffset">Shadow Distance:</label>
+							<div class="range-container">
+								<input type="range" name="shadowOffsetRange" min="0" max="20" value="2">
+							</div>
+							<div class="number-container">
+								<input type="number" id="shadowOffset" name="shadowOffset" min="0" max="20" value="2">
+							</div>
+						</div>
+						<div class="property">
+							<label for="textColor">Text Color:</label>
+							<div class="color-container">
+								<input type="color" data-color="true" id="textColor" name="textColor" value="#ffffff">
+							</div>
+						</div>
+						<div class="property">
+							<label for="shadowColor">Shadow Color:</label>
+							<div class="color-container">
+								<input type="color" data-color="true" id="shadowColor" name="shadowColor" value="#000000">
+							</div>
+						</div>
+					</div>
+					<div class="content" id="background-settings">
+						<div class="property">
+							<label for="backgroundColor">Background Color:</label>
+							<div class="color-container">
+								<input type="color" data-color="true" id="backgroundColor" name="backgroundColor" value="#f68cff">
+							</div>
+						</div>
+						<div class="property">
+							<label for="animateBackgroundHue">Animate Background:</label>
+							<div class="select-container">
+								<select id="animateBackgroundHue" name="animateBackgroundHue">
+									<option value="true">Yes</option>
+									<option value="false" selected>No</option>
+								</select>
+							</div>
+						</div>
+						<div class="property">
+							<label for="hueLowestValue">Darkest Color:</label>
+							<div class="range-container">
+								<input type="range" name="hueLowestValueRange" min="0" max="255" value="80" disabled>
+							</div>
+							<div class="number-container">
+								<input type="number" id="hueLowestValue" name="hueLowestValue" min="0" max="255" value="80" disabled>
+							</div>
+						</div>
+						<div class="property">
+							<label for="hueHighestValue">Lightest Color:</label>
+							<div class="range-container">
+								<input type="range" name="hueHighestValueRange" min="0" max="255" value="208" disabled>
+							</div>
+							<div class="number-container">
+								<input type="number" id="hueHighestValue" name="hueHighestValue" min="0" max="255" value="208" disabled>
+							</div>
+						</div>
+						<div class="property">
+							<label for="hueSpeed">Rate of Change:</label>
+							<div class="range-container">
+								<input type="range" name="hueSpeedRange" min="0" max="2" step="0.1" value="2" disabled>
+							</div>
+							<div class="number-container">
+								<input type="number" id="hueSpeed" name="hueSpeed" min="0" max="2" step="0.1" value="2" disabled>
+							</div>
+						</div>
+					</div>
+				</form>
+				<p><strong>Tip: </strong>You can drag the grid around the page.</p>
+				<input id="playPause" type="button" value="Pause">
+				<input id="randomize" type="button" value="Random Preset">
+				<input id="reset" type="button" value="Reset">
+				<input id="saveImage" type="hidden" value="Aesthetic.">
+			</div>
+		</div>
+		<div id="share-window" class="window">
+			<div class="title">
+				<p>Share Your Aesthetic</p>
+				<div class="shrink">
+					<div class="icon expand"></div>
+				</div>
+			</div>
+			<div class="window-content hide">
+				<p>Copy and paste the link below to share your unique aesthetic with others, or tap one of the buttons below.</p>
+				<p>Do not share messages that you would not post publicly in your aesthetic.</p>
+				<div class="link-container">
+					<input type="text" id="share-link" value="" readonly onclick="this.select()">
+				</div>
+				<a class="share-button" target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=http%3A//doseofted.com/project/aesthetic/app.htm&title=Aesthetic.">
+					<p class="facebook-icon">Share to Facebook</p>
+				</a>
+				<a class="share-button" target="_blank" href="http://twitter.com/intent/tweet?status=Aesthetic.+http%3A//doseofted.com/project/aesthetic/app.htm">
+					<p class="twitter-icon">Share to Twitter</p>
+				</a>
+				<p>Made by Vedant</a></p>
+			</div>
+		</div>
+		<!--<div id="advertisement-window" class="window">
+			<div class="title noclose">
+				<p>Advertisement</p>
+			</div>
+			<div class="window-content">
+				<div class="ad-content" style="width:100%; height: 60px; margin: 0 auto;"></div>
+			</div>
+		</div>-->
+	</div>
+	<div id="notice-container">
+		<div id="notice-window" class="window">
+			<div class="title noclose">
+				<p>Important Notice</p>
+			</div>
+			<div class="window-content">
+				<p>If you are at risk of photosensitive epileptic seizures, please close this tab. Otherwise, continue.</p>
+				<input id="close-notice" type="button" value="Continue" onclick="showContent()">
+			</div>
+		</div>
+	</div>
+	<script>
+	var grid; var ui;
+	window.addEventListener("DOMContentLoaded", function () {
+		grid = new RadGrid();
+		ui = new AestheticUI();
+	});
+	var showContent = function () {
+		document.getElementById("notice-container").style.display = "none";
+	};
+	</script>
+</body>
+</html>
